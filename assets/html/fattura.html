@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fattura</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+  <main>
+    <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Fattura</h2>
+    <p style="text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Grazie per la tua prenotazione!</p>
+    <h1 style="text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Dettagli della prenotazione:</h1>
+    <ul style="text-align: center;">
+      <li>Nome: <span id="nome"></span></li>
+      <li>Email: <span id="email"></span></li>
+      <li>Camera: <span id="camera"></span></li>
+      <li>Check-in: <span id="checkin"></span></li>
+      <li>Check-out: <span id="checkout"></span></li>
+      <li>Metodo di pagamento: <span id="metodoPagamento"></span></li>
+    </ul>
+    <p style="text-align: center;">Codice prenotazione: <strong id="codicePrenotazione"></strong></p>
+    <img src="../foto/qrcode.png" alt="QR Code" style="display: block; margin: 0 auto; max-width: 400px;" />
+    <button onclick="printFattura()" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px;">Stampa Fattura</button> 
+  </main>
+
+  <script>
+    // Recupera i dati dal localStorage
+    const nome = localStorage.getItem('nome');
+    const email = localStorage.getItem('email');
+    const camera = localStorage.getItem('camera');
+    const checkin = localStorage.getItem('checkin');
+    const checkout = localStorage.getItem('checkout');
+    const metodoPagamento = localStorage.getItem('metodoPagamento');
+
+    // Genera un codice prenotazione casuale
+    const codicePrenotazione = Math.floor(100000000 + Math.random() * 900000000);
+
+    // Inserisce i dati nella pagina
+    document.getElementById('nome').textContent = nome || 'Non specificato';
+    document.getElementById('email').textContent = email || 'Non specificato';
+    document.getElementById('camera').textContent = camera || 'Non specificato';
+    document.getElementById('checkin').textContent = checkin || 'Non specificato';
+    document.getElementById('checkout').textContent = checkout || 'Non specificato';
+    document.getElementById('metodoPagamento').textContent = metodoPagamento || 'Non specificato';
+    document.getElementById('codicePrenotazione').textContent = codicePrenotazione;
+
+    //stampa pagina in pdf
+    function printFattura() {
+      window.print();
+    }
+  </script>
+</body>
+</html>

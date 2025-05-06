@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento con Carta</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+  <header>
+    <img src="../foto/logo.jpg" alt="Logo Crazy Hotel" class="logo"/>
+  </header>
+  <main>
+    <h2 style="text-align: center;">Inserisci i dati della tua Carta di Credito</h2>
+    <form id="cartaForm">
+      <label for="numeroCarta">Numero Carta:</label>
+      <input type="text" id="numeroCarta" name="numeroCarta" required />
+
+      <label for="scadenza">Data di Scadenza:</label>
+      <input type="month" id="scadenza" name="scadenza" required />
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" required />
+
+      <button type="submit">Paga Ora</button>
+      <button type="menu">Annulla pagamento</button>
+    </form>
+    <img src="../foto/pagamenti.jpg" alt="Metodi di pagamento" style="display: block; margin: 20px auto; max-width: 300px;" />
+  </main>
+    
+
+  <script>
+    document.getElementById('cartaForm').addEventListener('menu', function(event) {
+      window.location.href = '.../index.html';
+    });
+    document.getElementById('cartaForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const numeroCarta = document.getElementById('numeroCarta').value;
+
+      // Metodo di Luhn per validare il numero della carta
+      function validaCarta(numero) {
+        let somma = 0;
+        let alterna = false;
+        for (let i = numero.length - 1; i >= 0; i--) {
+          let n = parseInt(numero.charAt(i), 10);
+          if (alterna) {
+            n *= 2;
+            if (n > 9) n -= 9;
+          }
+          somma += n;
+          alterna = !alterna;
+        }
+        return somma % 10 === 0;
+      }
+
+      if (validaCarta(numeroCarta)) {
+        alert('Pagamento effettuato con successo!');
+        window.location.href = 'fattura.html';
+      } else {
+        alert('Numero di carta non valido. Riprova.');
+      }
+    });
+  </script>
+</body>
+</html>

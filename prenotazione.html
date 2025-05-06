@@ -1,0 +1,93 @@
+<!--Progettare il tracciato video, il modulo HTML e Javascript per prenotare 
+    una stanza di albergo In particolare si deve specificare il nominativo, 
+    la mail, la data di arrivo, selezionare il tipo di stanza 
+    (Base 70€/gg oppure Comfort 120€/gg ), il numero di giorni, 
+    ed indicare eventuali optional ( Aria condizionata 5€/gg, Letto aggiuntivo 6€/gg). 
+    Il modulo deve calcolare prezzo e rilasciare una ricevuta riassuntiva.-->
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prenota - Grand Hotel Milano</title>
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body>
+  <header>
+    <img src="assets/foto/logo.jpg" alt="Logo Crazy Hotel" class="logo"/>
+  </header>
+
+  <main>
+    <section id="prenotazione" class="prenotazione">
+      <h2>Prenota Ora</h2>
+      <form id="prenotazioneForm">
+        <label for="nome">Nominativo (Nome e Cognome):</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="camera">Tipo di Camera:</label>
+        <select id="camera" name="camera">
+          <option value="none">Seleziona il tipo</option>
+          <option value="base">Camera Base (70€/gg)</option>
+          <option value="comfort">Camera Comfort (120€/gg)</option>
+        </select>
+
+        <label for="checkin">Check-in:</label>
+        <input type="date" id="checkin" name="checkin" required />
+
+        <label for="checkout">Check-out:</label>
+        <input type="date" id="checkout" name="checkout" required />
+
+        <label for="metodoPagamento">Metodo di Pagamento:</label>
+        <select id="metodoPagamento" name="metodoPagamento" required>
+          <option value="carta">Carta di Credito</option>
+          <option value="paypal">PayPal</option>
+          <option value="altro">Altro</option>
+        </select>
+
+        <button type="submit">Continua</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Grand Hotel Milano</p>
+    <p>Email: info@grandhotelmilano.it | Telefono: +39 02 12345678</p>
+  </footer>
+  <script>
+    document.getElementById('prenotazioneForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Previene il comportamento predefinito del form
+  
+      // Raccoglie i dati del modulo
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const camera = document.getElementById('camera').value;
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      const metodoPagamento = document.getElementById('metodoPagamento').value;
+  
+      // Salva i dati nel localStorage
+      localStorage.setItem('nome', nome);
+      localStorage.setItem('email', email);
+      localStorage.setItem('camera', camera);
+      localStorage.setItem('checkin', checkin);
+      localStorage.setItem('checkout', checkout);
+      localStorage.setItem('metodoPagamento', metodoPagamento);
+  
+      // Gestisce il metodo di pagamento selezionato
+      if (metodoPagamento === 'carta') {
+        window.location.href = 'assets/html/pagamento_carta.html';
+      } else if (metodoPagamento === 'paypal') {
+        window.location.href = 'assets/html/pagamento_paypal.html';
+      } else if (metodoPagamento === 'altro') {
+        window.location.href = 'assets/html/pagamento_altro.html';
+      } else {
+        alert('Seleziona un metodo di pagamento valido.');
+      }
+    });
+  </script>
+</body>
+</html>

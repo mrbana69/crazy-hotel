@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento Altro</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <img src="../foto/logo.jpg" alt="Logo Crazy Hotel" class="logo"/>
+  </header>
+  <main>
+    <h2>Pagamento con Metodo Alternativo</h2>
+    <p>Seleziona fino a 3 opzioni dalla lista seguente:</p>
+    <form id="altroForm">
+      <ul>
+        <li><input type="checkbox" name="parti" value="Braccio"> Braccio</li>
+        <li><input type="checkbox" name="parti" value="Gamba"> Gamba</li>
+        <li><input type="checkbox" name="parti" value="Occhio"> Occhio</li>
+        <li><input type="checkbox" name="parti" value="Rene"> Rene</li>
+        <li><input type="checkbox" name="parti" value="Fegato"> Fegato</li>
+      </ul>
+
+      <div id="termini">
+        <h3>Termini e Condizioni</h3>
+        <p>
+          Accettando questo metodo di pagamento, confermi di essere consapevole delle condizioni e di accettare eventuali conseguenze. 
+          Questo è un esempio fittizio e non rappresenta una transazione reale.
+        </p>
+      </div>
+
+      <label>
+        <input type="checkbox" id="accettaTermini" required />
+        Accetto i termini e condizioni
+      </label>
+
+      <button type="submit">Continua</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Grand Hotel Milano</p>
+    <p>Email: info@grandhotelmilano.it | Telefono: +39 02 12345678</p>
+  </footer>
+
+  <script>
+    document.getElementById('altroForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Controlla se sono selezionate al massimo 3 opzioni
+      const selezionati = document.querySelectorAll('input[name="parti"]:checked');
+      if (selezionati.length > 3) {
+        alert('Puoi selezionare al massimo 3 opzioni.');
+        return;
+      }
+
+      if (selezionati.length === 0) {
+        alert('Devi selezionare almeno un’opzione.');
+        return;
+      }
+
+      // Simula il completamento del pagamento
+      alert('Pagamento completato con successo!');
+      window.location.href = 'fattura.html';
+    });
+  </script>
+</body>
+</html>
