@@ -1,145 +1,149 @@
-/* Importa un font esterno */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+html {
+  scroll-behavior: smooth;
+}
 
-/* Impostazioni generali */
+.camera-card video {
+  width: 100%; /* Rende il video responsivo e adatta la larghezza al contenitore */
+  max-width: 400px; /* Imposta una larghezza massima per il video */
+  height: auto; /* Mantiene le proporzioni del video */
+  border-radius: 8px; /* Aggiunge angoli arrotondati per un design più moderno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra per un effetto visivo migliore */
+  margin-top: 10px; /* Spazio tra il video e il contenuto sopra */
+}
+
 body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
 }
 
-header {
-  background-color: #004080;
-  color: #fff;
-  padding: 1rem 0;
-  text-align: center;
-}
-
-header #logo img {
-  max-width: 150px;
+.container {
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-main {
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-h2 {
-  color: #004080;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-main button {
-  background-color: #004080;
+.header {
+  background: #004080;
   color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px 0;
 }
-form {
+
+.header .logo {
+  height: 50px;
+}
+
+.navbar {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
-form label {
+.navbar a {
+  color: #fff;
+  text-decoration: none;
   font-weight: 500;
 }
 
-form input, form select, form button {
-  padding: 0.8rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.hero h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-form input:focus, form select:focus {
-  outline: none;
-  border-color: #004080;
-  box-shadow: 0 0 5px rgba(0, 64, 128, 0.5);
+.hero h2 {
+  font-family: 'Courier New', Courier, monospace;
 }
 
-form button {
-  background-color: #004080;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.hero {
+  position: relative;
+  height: 60vh; /* Altezza della sezione */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url('assets/foto/hero.jpg') no-repeat center center/cover;
 }
 
-form button:hover {
-  background-color: #003366;
+.video-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-footer {
+.video-overlay video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene il rapporto 16:10 */
+  filter: brightness(50%); /* Abbassa la luminosità */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  padding: 1rem 0;
-  background-color: #004080;
   color: #fff;
-  margin-top: 2rem;
+  z-index: 2;
 }
 
-footer p {
-  margin: 0.5rem 0;
+.hero-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 
-/* Stile per la pagina di pagamento */
-main h2 {
-  margin-bottom: 2rem;
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }
 
-main form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-main form button {
-  margin-top: 1rem;
-}
-
-/* Stile per la lista delle parti (opzione "Altro") */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 0.5rem 0;
-}
-
-#termini {
-  background-color: #f1f1f1;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 1rem;
-}
-
-#termini h3 {
-  margin-top: 0;
-}
-
-#termini p {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-button {
-  background-color: #004080;
+.btn-primary {
+  background: #004080;
   color: #fff;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #e65a50;
+}
+
+.camere-container, .recensioni-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.camera-card, .recensione-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recensione-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
 }

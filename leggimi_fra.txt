@@ -1,0 +1,8 @@
+per il massimo funzionamento le consiglio di avviare il live server sulla pagina index.html
+
+sennò vada al mio sito github per provarlo:
+
+link: https://mrbana69.github.io/crazy-hotel
+
+
+sta volta non ho messo un nome innapropriato ehh!
