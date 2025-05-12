@@ -11,7 +11,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Prenota - Grand Hotel Milano</title>
-  <link rel="stylesheet" href="./assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
   <header>
@@ -24,50 +24,73 @@
       <form id="prenotazioneForm">
         <label for="nome">Nominativo (Nome e Cognome):</label>
         <input type="text" id="nome" name="nome" required />
-
+        <br>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
-
+        <br>
         <label for="camera">Tipo di Camera:</label>
         <select id="camera" name="camera">
           <option value="none">Seleziona il tipo</option>
           <option value="base">Camera Base (70€/gg)</option>
           <option value="comfort">Camera Comfort (120€/gg)</option>
         </select>
-
+        <br>
         <label for="checkin">Check-in:</label>
         <input type="date" id="checkin" name="checkin" required />
-
+        <br>
         <label for="checkout">Check-out:</label>
         <input type="date" id="checkout" name="checkout" required />
-
+        <br>
         <label for="metodoPagamento">Metodo di Pagamento:</label>
         <select id="metodoPagamento" name="metodoPagamento" required>
           <option value="carta">Carta di Credito</option>
           <option value="paypal">PayPal</option>
           <option value="altro">Altro</option>
         </select>
-
+        <br>
         <button type="submit">Continua</button>
       </form>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Grand Hotel Milano</p>
-    <p>Email: info@grandhotelmilano.it | Telefono: +39 02 12345678</p>
+  <footer id="contatti" class="footer">
+    <div class="container">
+      <p>&copy; 2025 Crazy Hotel SPA</p>
+      <p>Email: info@crazyhotel.it | Telefono: +39 320 282 0024</p>
+    </div>
   </footer>
   <script>
     document.getElementById('prenotazioneForm').addEventListener('submit', function(event) {
       event.preventDefault(); // Previene il comportamento predefinito del form
   
       // Raccoglie i dati del modulo
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
       const camera = document.getElementById('camera').value;
       const checkin = document.getElementById('checkin').value;
       const checkout = document.getElementById('checkout').value;
       const metodoPagamento = document.getElementById('metodoPagamento').value;
+  
+      // Validazione dei campi
+      if (!nome || !email || camera === "none" || !checkin || !checkout || !metodoPagamento) {
+        alert('Per favore, compila tutti i campi obbligatori.');
+        return;
+      }
+  
+      // Calcolo del numero di giorni
+      const checkinDate = new Date(checkin);
+      const checkoutDate = new Date(checkout);
+      const diffTime = checkoutDate - checkinDate;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+      if (diffDays <= 0) {
+        alert('La data di check-out deve essere successiva alla data di check-in.');
+        return;
+      }
+  
+      // Calcolo del prezzo totale
+      let prezzoCamera = camera === 'base' ? 70 : 120;
+      let prezzoTotale = prezzoCamera * diffDays;
   
       // Salva i dati nel localStorage
       localStorage.setItem('nome', nome);
@@ -76,6 +99,7 @@
       localStorage.setItem('checkin', checkin);
       localStorage.setItem('checkout', checkout);
       localStorage.setItem('metodoPagamento', metodoPagamento);
+      localStorage.setItem('prezzoTotale', prezzoTotale);
   
       // Gestisce il metodo di pagamento selezionato
       if (metodoPagamento === 'carta') {

@@ -1,149 +1,145 @@
-html {
-  scroll-behavior: smooth;
-}
+/* Importa un font esterno */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-.camera-card video {
-  width: 100%; /* Rende il video responsivo e adatta la larghezza al contenitore */
-  max-width: 400px; /* Imposta una larghezza massima per il video */
-  height: auto; /* Mantiene le proporzioni del video */
-  border-radius: 8px; /* Aggiunge angoli arrotondati per un design più moderno */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra per un effetto visivo migliore */
-  margin-top: 10px; /* Spazio tra il video e il contenuto sopra */
-}
-
+/* Impostazioni generali */
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
+header {
+  background-color: #004080;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+header #logo img {
+  max-width: 150px;
   margin: 0 auto;
 }
 
-.header {
-  background: #004080;
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #004080;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+main button {
   color: #fff;
-  padding: 10px 0;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding-right: 50px;
 }
-
-.header .logo {
-  height: 50px;
-}
-
-.navbar {
+form {
   display: flex;
-  justify-content: flex-end;
-  gap: 20px;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
+form label {
   font-weight: 500;
 }
 
-.hero h1 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.hero h2 {
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.hero {
-  position: relative;
-  height: 60vh; /* Altezza della sezione */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: url('assets/foto/hero.jpg') no-repeat center center/cover;
-}
-
-.video-overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.video-overlay video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Mantiene il rapporto 16:10 */
-  filter: brightness(50%); /* Abbassa la luminosità */
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fff;
-  z-index: 2;
-}
-
-.hero-content h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-.btn-primary {
-  background: #004080;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
+form input, form select, form button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background 0.3s ease;
 }
 
-.btn-primary:hover {
-  background: #e65a50;
+form input:focus, form select:focus {
+  outline: none;
+  border-color: #004080;
+  box-shadow: 0 0 5px rgba(0, 64, 128, 0.5);
 }
 
-.camere-container, .recensioni-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.camera-card, .recensione-card {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.recensione-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.footer {
-  background: #333;
+form button {
+  background-color: #004080;
   color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #003366;
+}
+
+footer {
   text-align: center;
-  padding: 20px 0;
+  padding: 1rem 0;
+  background-color: #004080;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+/* Stile per la pagina di pagamento */
+main h2 {
+  margin-bottom: 2rem;
+}
+
+main form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main form button {
+  margin-top: 1rem;
+}
+
+/* Stile per la lista delle parti (opzione "Altro") */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 0.5rem 0;
+}
+
+#termini {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+#termini h3 {
+  margin-top: 0;
+}
+
+#termini p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+button {
+  background-color: #004080;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

@@ -26,7 +26,11 @@
       <button type="menu">Annulla pagamento</button>
     </form>
     <img src="../foto/pagamenti.jpg" alt="Metodi di pagamento" style="display: block; margin: 20px auto; max-width: 300px;" />
+    <img src="../foto/gpay.png" onclick="pagaGPay()" style="display: block; margin: 20px auto; max-width: 300px; border-radius: 60px;"><br>
+    <img src="../foto/pay_postepay.png" onclick="pagaPostepay()" style="display: block; margin: 20px auto; max-width: 300px; border-radius: 10px;">
   </main>
+
+
     
 
   <script>
@@ -61,6 +65,16 @@
         alert('Numero di carta non valido. Riprova.');
       }
     });
+
+    function pagaPostepay(){
+      alert('Pagamento effettuato con successo!');
+      window.location.href = 'fattura.html';
+    }
+
+    function pagaGPay(){
+      alert('Pagamento effettuato con successo!');
+      window.location.href = 'fattura.html';
+    }
   </script>
 </body>
 </html>
